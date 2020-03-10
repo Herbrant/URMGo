@@ -1,26 +1,58 @@
 package main
 
+import (
+	"fmt"
+	"log"
+	"strconv"
+)
+
 //Instruction rappresents an URM simple instruction (Z, S, T, J)
 type Instruction struct {
 	TYPE       rune
-	i          uint16
-	parameters []uint16
+	i          uint
+	parameters []uint
 }
 
 var instructionSet = []rune{'Z', 'S', 'T', 'J'}
 
-func resetInstruction() {
+//NumberRegisters rappresents the number of registers which we can use
+const NumberRegisters = 100
 
+func loadRegisters(errLog *log.Logger, reg []string) {
+
+	for i := 0; i < NumberRegisters; i = i + 1 {
+		GlobalRegisters = append(GlobalRegisters, 0)
+	}
+
+	for i, val := range reg {
+		tmp, err := strconv.ParseUint(val, 10, 16)
+
+		if err != nil {
+			errLog.Panicln("Input Registers Error")
+		}
+
+		GlobalRegisters[i] = uint(tmp)
+	}
 }
 
-func incrementInstruction() {
-
+func resetInstruction(n uint) {
+	GlobalRegisters[n] = 0
 }
 
-func assignmentInstruction() {
-
+func incrementInstruction(reg uint) {
+	GlobalRegisters[reg]++
 }
 
-func conditionalJumpInstruction() {
+func assignmentInstruction(m uint, n uint) {
+	fmt.Printf("Before %d\n", n)
+	GlobalRegisters[n] = GlobalRegisters[m]
+	fmt.Printf("After %d\n", n)
+}
 
+func conditionalJumpInstruction(m uint, n uint, q uint) {
+	if GlobalRegisters[m] == GlobalRegisters[n] {
+		k = q
+	} else {
+		k++
+	}
 }

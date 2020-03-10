@@ -4,7 +4,14 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 )
+
+//GlobalInstructionArray rappresents the array of instruction to be executed
+var GlobalInstructionArray []Instruction
+
+//GlobalRegisters rappresents the array of registers
+var GlobalRegisters []uint
 
 func main() {
 	args := os.Args
@@ -15,12 +22,17 @@ func main() {
 		errLog.Fatalf("Usage:" + args[0] + " [URM_FILE_SOURCE] [R1, R2, ...]")
 	}
 
-	registers := args[2:]
+	registerString := args[2:]
+	loadInstruction(errLog, args[1])
+	loadRegisters(errLog, registerString)
 
-	fmt.Println(registers)
+	fmt.Println("Instruction List:")
+	fmt.Println(GlobalInstructionArray)
+	fmt.Println(GlobalRegisters)
 
-	InstructionArray := loadInstruction(errLog, args[1])
+	start()
 
-	fmt.Println(InstructionArray)
-
+	println("Finished")
+	println("Output: " + strconv.Itoa(int(GlobalRegisters[0])))
+	fmt.Println(GlobalRegisters)
 }

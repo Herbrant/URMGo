@@ -8,8 +8,8 @@ import (
 	"strings"
 )
 
-func createParametersArray(parameters []string) ([]uint16, error) {
-	array := []uint16{}
+func createParametersArray(parameters []string) ([]uint, error) {
+	array := []uint{}
 
 	for _, value := range parameters {
 		tmp, err := strconv.ParseUint(value, 10, 16)
@@ -18,7 +18,7 @@ func createParametersArray(parameters []string) ([]uint16, error) {
 			return nil, err
 		}
 
-		array = append(array, uint16(tmp))
+		array = append(array, uint(tmp))
 	}
 
 	return array, nil
@@ -102,14 +102,14 @@ func createInstruction(errLog *log.Logger, line string) Instruction {
 	}
 
 	var inst Instruction
-	inst.i = uint16(i)
+	inst.i = uint(i)
 	inst.TYPE = t
 	inst.parameters = parameters
 
 	return inst
 }
 
-func loadInstruction(errLog *log.Logger, pathfile string) []Instruction {
+func loadInstruction(errLog *log.Logger, pathfile string) {
 	readFile, err := os.Open(pathfile)
 
 	if err != nil {
@@ -126,11 +126,7 @@ func loadInstruction(errLog *log.Logger, pathfile string) []Instruction {
 
 	readFile.Close()
 
-	var InstructionArray []Instruction
-
 	for _, eachline := range fileTextLines {
-		InstructionArray = append(InstructionArray, createInstruction(errLog, eachline))
+		GlobalInstructionArray = append(GlobalInstructionArray, createInstruction(errLog, eachline))
 	}
-
-	return InstructionArray
 }
