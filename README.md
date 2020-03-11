@@ -24,7 +24,7 @@ where URM_PROGRAM_SOURCE is the path of your URM program and R1, R2, R3 are the 
 ### URM Program example
 This is an URM program example to calculate
 
-![example1](example/example1.png)
+![example1](examples/example1.png)
 
 ```
 examples/example1
