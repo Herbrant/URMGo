@@ -1,5 +1,5 @@
 # URM Program Examples
-Here you can find some URM program examples, you can try them to see how to
+Here you can find some URM program examples.
 
 ## Example 1
 ![example1](./example1.png)

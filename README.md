@@ -41,6 +41,7 @@ You can execute it with:
 ```
 $ ./bin/URMGo examples/example1 x
 ```
+There are also other examples [here](./examples) 
 
 ## Built with
 * [Go](https://golang.org/)
