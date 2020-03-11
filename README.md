@@ -24,10 +24,10 @@ where URM_PROGRAM_SOURCE is the path of your URM program and R1, R2, R3 are the 
 ### URM Program example
 This is an URM program example to calculate
 
-![function1](example/example1.png)
+![example1](example/example1.png)
 
 ```
-example/example1
+examples/example1
 
 1: Z(2)
 2: J(1,2,5)
@@ -35,6 +35,11 @@ example/example1
 3: S(1)
 4: J(1,1,0)
 5: Z(1)
+```
+
+You can execute it with:
+```
+$ ./bin/URMGo examples/example1 x
 ```
 
 ## Built with

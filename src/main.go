@@ -32,7 +32,6 @@ func main() {
 
 	start()
 
-	println("Finished")
-	println("Output: " + strconv.Itoa(int(GlobalRegisters[0])))
 	fmt.Println(GlobalRegisters)
+	println("Output (R1): " + strconv.Itoa(int(GlobalRegisters[0])))
 }
