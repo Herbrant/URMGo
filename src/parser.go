@@ -62,43 +62,43 @@ func checkParametersNumber(instruction rune, parameters []string) bool {
 	return true
 }
 
-func cleanSplittedLine(values []string) {
-	for _, el := range values {
-		el = strings.TrimSpace(el)
-	}
-}
-
-func createInstruction(errLog *log.Logger, line string) Instruction {
+func trimString(line string) string {
 	line = strings.ReplaceAll(line, ":", "")
 	line = strings.ReplaceAll(line, "(", " ")
 	line = strings.ReplaceAll(line, ",", " ")
 	line = strings.ReplaceAll(line, ")", "")
-	splittedLine := strings.Split(line, " ")
+	line = strings.TrimRight(line, "\t \n")
+	line = strings.TrimLeft(line, "\t \n")
 
-	cleanSplittedLine(splittedLine)
+	return line
+}
+
+func createInstruction(errLog *log.Logger, line string) Instruction {
+	line = trimString(line)
+	splittedLine := strings.Split(line, " ")
 
 	i, err := strconv.ParseUint(splittedLine[0], 10, 16)
 
 	if err != nil {
-		errLog.Panicln("Input error")
+		errLog.Panicln("[INPUT ERROR]: instruction number")
 	}
 
 	t := rune(strings.ToUpper(splittedLine[1])[0])
 
 	if !checkInstruction(t) {
-		errLog.Panicln("Input error")
+		errLog.Panicln("[INPUT ERROR]: instruction type")
 	}
 
 	parameterString := splittedLine[2:]
 
 	if !checkParametersNumber(t, parameterString) {
-		errLog.Panicln("Input error")
+		errLog.Panicln("[INPUT_ERROR]: parameters number")
 	}
 
 	parameters, err := createParametersArray(parameterString)
 
 	if err != nil {
-		errLog.Panicln("Input error")
+		errLog.Panicln("[INPUT ERROR]: parameters")
 	}
 
 	var inst Instruction
