@@ -4,7 +4,7 @@ import "fmt"
 
 var k uint = 1
 
-const maxNumberInstruction = 50
+const maxNumberInstruction = 10000
 
 func executeInstruction() {
 
@@ -33,7 +33,7 @@ func start() bool {
 		}
 
 		if executionCounter > maxNumberInstruction {
-			fmt.Printf("Executed 50 instructions, do you want to continue? (Y/N): ")
+			fmt.Printf("Executed %d instructions, do you want to continue? (Y/N): ", maxNumberInstruction)
 			fmt.Scanf("%c\n", &selected)
 
 			if selected == 'y' || selected == 'Y' {

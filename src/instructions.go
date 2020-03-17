@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"strconv"
 )
@@ -44,9 +43,7 @@ func incrementInstruction(reg uint) {
 }
 
 func assignmentInstruction(m uint, n uint) {
-	fmt.Printf("Before %d\n", n)
 	GlobalRegisters[n] = GlobalRegisters[m]
-	fmt.Printf("After %d\n", n)
 }
 
 func conditionalJumpInstruction(m uint, n uint, q uint) {
