@@ -1,4 +1,6 @@
 # URMGo
+[![Go Report Card](https://goreportcard.com/badge/github.com/Herbrant/URMGo)](https://goreportcard.com/report/github.com/Herbrant/URMGo)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/herbrant/URMGo/blob/master/LICENSE)
 
 **URMGo** is a simple URM (*Unlimited Register Machine*) emulator written in [*Go*](https://golang.org/) to execute URM program.
 
